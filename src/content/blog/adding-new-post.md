@@ -13,8 +13,7 @@ description:
   theme.
 ---
 
-Here are some rules/recommendations, tips & ticks for creating new posts in AstroPaper blog theme.
-
+````
 ## Table of contents
 
 ## Frontmatter
@@ -52,7 +51,7 @@ export const blogSchema = z.object({
   ogImage: z.string().optional(),
   description: z.string(),
 });
-```
+````
 
 ### Sample Frontmatter
 
