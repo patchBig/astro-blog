@@ -25,6 +25,7 @@ description: resume
 ### 个人优势
 
 - 熟练掌握 JavaScript
+- 熟练掌握
 - 熟悉使用 React、Vue、小程序的开发
 - 对 C++ 转 wasm 有一定研究，保持对新技术的探索
 - 熟悉前端工程化建设，对 babel、webpack 有一定了解

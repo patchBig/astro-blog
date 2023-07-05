@@ -8,6 +8,9 @@ tags:
   - useState
   - useCallback
 description: 在 vim 编辑器中使用 useState 和 useCallback.
+
+import DESC_1 from "/assets/1.gif";
+
 ---
 
 记录一次在 VIM 编辑器使用 useCallback 的错误姿势
@@ -65,7 +68,7 @@ export default function Children(props) {
 
 每次调用 changeState 页面上 state 会发生变化，但是 requestAnimationFrame 回调 getState 中不会拿到最新的 state，导致处理逻辑会有问题。
 
-<img src="/react/1.gif" alt="state change but requestAnimationFrame callback not got">
+<img src={DESC_1} alt="state change but requestAnimationFrame callback not got">
 
 ## 思考
 
@@ -108,11 +111,11 @@ export default function Children(props) {
 }
 ```
 
-<img src="/react/2.gif" alt="state change with useRef">
+<img src="/assets/react/2.gif" alt="state change with useRef">
 
 这样写的话，会有一个小瑕疵，`useEffect` 中会提示未将 `requestAnimationFrameCallback` 放入依赖项（虽然我在 vim 中未安装对应的插件，这点还是在 codesandbox 中提示的。。。）
 
-<img src="/react/3.png" alt="required dependencies">
+<img src="/assets/react/3.png" alt="required dependencies">
 
 于是我们按照规范的写法，这样就大功告成了。
 
@@ -153,7 +156,7 @@ useEffect(() => {
 
 这样的话，虽然 `react-hooks/exhaustive-deps` 没有任何的警告信息，但是又引发出另一个问题。每次 `state` 变化就会导致 `getState`，然后 `requestAnimationFrameCallback` 变化，又接着触发新的 `requestAnimationFrame` 函数调用。简单来说，`state` 变化一次，`requestAnimationFrame` 也会增加一个。
 
-<img src="/react/4.gif" alt="required dependencies">
+<img src="/assets/react/4.gif" alt="required dependencies">
 
 所以需要我们在 `state` 变化的时候，又一次触发 `requestAnimationFrameCallback` 时，立即清除上一次的 `requestAnimationFrame`，就不会存在多次的 `requestAnimationFrame`。
 
@@ -169,7 +172,7 @@ useEffect(() => {
 }, [requestAnimationFrameCallback]);
 ```
 
-<img src="/react/5.gif" alt="required dependencies">
+<img src="/assets/react/5.gif" alt="required dependencies">
 
 ## 新的问题
 
@@ -204,7 +207,7 @@ useEffect(() => {
 }, []);
 ```
 
-<img src="/react/6.gif" alt="setTimeout change state">
+<img src="/assets/react/6.gif" alt="setTimeout change state">
 
 **能明显看到，本应该 log 3 次，在点击了两次 change 之后，只打印了 2 次。**
 
