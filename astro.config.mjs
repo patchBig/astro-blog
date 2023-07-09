@@ -10,9 +10,6 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
   base: "/astro-blog",
-  experimental: {
-    assets: true,
-  },
   integrations: [
     tailwind({
       config: {
