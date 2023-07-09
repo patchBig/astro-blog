@@ -6,10 +6,15 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 
+const imgEntry = "astro-blog";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  base: '/astro-blog',
+  base: "/astro-blog",
+  experimental: {
+    assets: true,
+  },
   integrations: [
     tailwind({
       config: {
