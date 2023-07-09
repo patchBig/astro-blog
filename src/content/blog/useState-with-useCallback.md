@@ -65,6 +65,7 @@ export default function Children(props) {
 
 每次调用 changeState 页面上 state 会发生变化，但是 requestAnimationFrame 回调 getState 中不会拿到最新的 state，导致处理逻辑会有问题。
 
+![state change but requestAnimationFrame callback not got](public/assets/1.gif)
 <img src="/assets/1.gif" alt="state change but requestAnimationFrame callback not got">
 
 ## 思考
