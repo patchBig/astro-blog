@@ -56,5 +56,6 @@
     "*": [
       "prettier --plugin-search-dir=. --write"
     ]
-  }
+  },
+  "repository": "https://github.com/patchBig/astro-blog.git"
 }
